@@ -15,7 +15,11 @@ const ChatContainer = () => {
     const [roomInfo, setRoomInfo] = useState<null | { _id: string }>(null);
     const [error, setError] = useState<null | string>(null);
 
-    useDidMountEffect(() => {
+    // useDidMountEffect(() => {
+    //     if(isConnecting == false && roomInfo == null) createRoom();
+    // }, [])
+
+    useEffect(() => {
         if(isConnecting == false && roomInfo == null) createRoom();
     }, [])
 

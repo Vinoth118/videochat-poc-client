@@ -36,9 +36,13 @@ const Home: NextPage = () => {
         }
     }, [loggedInUser])
 
-    useDidMountEffect(() => {
+    useEffect(() => {
         getRooms()
     }, [])
+
+    // useDidMountEffect(() => {
+    //     getRooms()
+    // }, [])
 
     const getRooms = async () => {
         setRoomsLoading(true);

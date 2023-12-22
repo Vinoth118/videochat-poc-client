@@ -1,7 +1,7 @@
 import { Button, Text, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, Flex, Icon, IconButton, Menu, MenuButton, MenuList, useDisclosure, useMediaQuery, Spinner } from "@chakra-ui/react";
 import { IAgoraRTCClient, IRemoteVideoTrack, UID } from "agora-rtc-sdk-ng";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FcVideoCall } from "react-icons/fc";
 import { MdChat, MdClose, MdError, MdVideoCall, MdVideocam } from "react-icons/md";
 import { Room } from "../../../pages/video/admin";
@@ -39,7 +39,11 @@ const VideoContainer = () => {
     const [error, setError] = useState<null | string>(null);
     const [ credentials, setCredentials ] = useState<VideoCredentials>({ rtcToken: null, appId: null, userId: null, channelName: roomInfo?._id ?? '', isLoading: false })
 
-    useDidMountEffect(() => {
+    // useDidMountEffect(() => {
+    //     if(isConnecting == false && roomInfo == null) createRoom();
+    // }, [])
+
+    useEffect(() => {
         if(isConnecting == false && roomInfo == null) createRoom();
     }, [])
 
@@ -91,7 +95,6 @@ const VideoContainer = () => {
     
     return (
         <Flex w = '100%' h = '100%' justifyContent = 'center' direction={'column'}>
-            test
             {
                 isConnecting ? 
                 <Flex w = '100%' direction={'column'} gap = '15px' alignItems={'center'}>
