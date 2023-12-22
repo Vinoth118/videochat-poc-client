@@ -27,7 +27,7 @@ const Home: NextPage = () => {
     }, [loggedInUser])
 
     const onDidLogout = () => {
-        router.replace('/admin_login');
+        router.replace('/customer_login');
     }
     
     return (

@@ -91,6 +91,7 @@ const VideoContainer = () => {
     
     return (
         <Flex w = '100%' h = '100%' justifyContent = 'center' direction={'column'}>
+            test
             {
                 isConnecting ? 
                 <Flex w = '100%' direction={'column'} gap = '15px' alignItems={'center'}>
