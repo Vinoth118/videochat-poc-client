@@ -22,13 +22,17 @@ const Home: NextPage = () => {
 
     useEffect(() => {
         if(loggedInUser == null) {
-            router.push('/customer_login');
+            router.replace('/customer_login');
         }
     }, [loggedInUser])
+
+    const onDidLogout = () => {
+        router.replace('/admin_login');
+    }
     
     return (
         <Flex w = '100%' direction={'column'} gap = '50px' minH = '100vh'>
-            <Header />
+            <Header onDidLogout = {onDidLogout} />
             <Flex flex = {1} margin={'auto'} w = '100%' maxW = '1400px' direction={'column'} gap = '30px' px = '20px'>   
                 <Flex gap = '30px' direction={['column', 'column', 'column', 'row', 'row']}>
                     <Skeleton w = '100%' h = '500px' borderRadius={'10px'} />

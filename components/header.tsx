@@ -7,7 +7,7 @@ import { LoggedInUserDetails } from "./user_form";
 
 let OneSingalInstance: MyOneSignal;
 
-const Header = () => {
+const Header = ({ onDidLogout }: { onDidLogout: () => void }) => {
     const [logoutLoading, setLogoutLoading] = useState(false);
     const [loggedInUser, setLoggedInUser] = useLocalStorage<LoggedInUserDetails>('customer_auth_user');
 
@@ -22,6 +22,7 @@ const Header = () => {
         await OneSingalInstance.logout(loggedInUser!.oneSignalAppId)
         setLogoutLoading(false);
         setLoggedInUser(null);
+        onDidLogout();
     }
     
     return (

@@ -32,7 +32,7 @@ const Home: NextPage = () => {
 
     useEffect(() => {
         if(loggedInUser == null) {
-            router.push('/admin_login');
+            router.replace('/admin_login');
         }
     }, [loggedInUser])
 
@@ -60,9 +60,13 @@ const Home: NextPage = () => {
         setAttenenedCall(null)
     }
 
+    const onDidLogout = () => {
+        router.replace('/admin_login');
+    }
+
     return (
         <Flex w = '100%' direction={'column'} gap = '5px' minH = '100vh'>
-            <Header />
+            <Header onDidLogout={onDidLogout} />
             <Skeleton display={['none', 'none', 'flex', 'flex', 'flex']} position={'absolute'} top = '75px' h = 'calc(100vh - 75px)' w = '250px' />
             <Flex ml = {['0px', '0px', '255px', '255px', '255px']} w = 'auto' direction={'column'}>
                 <CallRoom isOpen = {attenededCall != null} user = {loggedInUser?.user!} roomInfo = {attenededCall} onClose = {onEndCall} />
