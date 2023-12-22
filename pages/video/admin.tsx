@@ -19,7 +19,7 @@ export interface Room {
     _id: string;
     callType: 'chat' | 'video_chat';
     user: User;
-    org: 'vinoth' | 'vijay';
+    org: 'vinothh' | 'vijayy';
     chats: ChatMessageType[]
 }
 
